@@ -1,0 +1,45 @@
+{
+  "paths": [
+    {
+      "name": "/api",
+      "lambdaFunction": "rubbishAccessAPI",
+      "privacy": {
+        "protected": true,
+        "auth": [
+          "/POST",
+          "/GET",
+          "/PUT",
+          "/PATCH",
+          "/DELETE"
+        ],
+        "unauth": [
+          "/GET"
+        ]
+      },
+      "policyResourceName": "/api"
+    }
+  ],
+  "resourceName": "rubbishAccessAPI",
+  "apiName": "rubbishAccessAPI",
+  "functionArns": [
+    {
+      "lambdaFunction": "rubbishAccessAPI"
+    }
+  ],
+  "privacy": {
+    "auth": 1,
+    "unauth": 1,
+    "authRoleName": "amplify-rubbishclient-dev-83729-authRole",
+    "unAuthRoleName": "amplify-rubbishclient-dev-83729-unauthRole"
+  },
+  "dependsOn": [
+    {
+      "category": "function",
+      "resourceName": "rubbishAccessAPI",
+      "attributes": [
+        "Name",
+        "Arn"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-rubbishclient-dev-83729-authRole",
+      "UnauthRoleArn": "arn:aws:iam::199342328116:role/amplify-rubbishclient-dev-83729-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::199342328116:role/amplify-rubbishclient-dev-83729-authRole",
+      "Region": "us-east-2",
+      "DeploymentBucketName": "amplify-rubbishclient-dev-83729-deployment",
+      "UnauthRoleName": "amplify-rubbishclient-dev-83729-unauthRole",
+      "StackName": "amplify-rubbishclient-dev-83729",
+      "StackId": "arn:aws:cloudformation:us-east-2:199342328116:stack/amplify-rubbishclient-dev-83729/c5815850-f96a-11eb-b9b0-0aa6cfc5a0b4",
+      "AmplifyAppId": "d31vw7vusqsyo7"
+    },
+    "categories": {
+      "storage": {
+        "colabRubbishUsers": {
+          "tableName": "colabRubbishUsers",
+          "region": "us-east-2",
+          "arn": "arn:aws:dynamodb:us-east-2:199342328116:table/colabRubbishUsers",
+          "partitionKeyName": "UserID",
+          "partitionKeyType": "S",
+          "sortKeyName": "CreationTime",
+          "sortKeyType": "S"
+        },
+        "rubbishclient127f5b6a": {
+          "bucketName": "colab-app-storage",
+          "region": "us-east-2"
+        }
+      },
+      "auth": {
+        "cognitob0d4fc52": {}
+      },
+      "function": {
+        "rubbishAccessAPI": {
+          "deploymentBucketName": "amplify-rubbishclient-dev-83729-deployment",
+          "s3Key": "amplify-builds/rubbishAccessAPI-376a6b626a764464325a-build.zip"
+        }
+      }
+    }
+  }
+}

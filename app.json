@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "RubbishClient",
+    "slug": "RubbishClient",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "RubbishClient"
+}
