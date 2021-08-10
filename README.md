@@ -1,0 +1,1 @@
+# Colab6 Cleanup Event Platform - Rubbish 
