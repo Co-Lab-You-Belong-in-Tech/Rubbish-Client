@@ -1,6 +1,6 @@
 {
     "identityPoolName": "rubbishclient_identitypool_b0d4fc52",
-    "allowUnauthenticatedIdentities": true,
+    "allowUnauthenticatedIdentities": false,
     "resourceNameTruncated": "rubbisb0d4fc52",
     "userPoolName": "rubbishclient_userpool_b0d4fc52",
     "autoVerifiedAttributes": [
@@ -45,5 +45,19 @@
             "UnauthRole",
             "Arn"
         ]
-    }
+    },
+    "hostedUI": true,
+    "useDefault": "defaultSocial",
+    "hostedUIDomainName": "rubbish-auth",
+    "authProvidersUserPool": [
+        "Google"
+    ],
+    "hostedUIProviderMeta": "[{\"ProviderName\":\"Google\",\"authorize_scopes\":\"openid email profile\",\"AttributeMapping\":{\"email\":\"email\",\"username\":\"sub\"}}]",
+    "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"http://localhost:3010/login/\"],\"LogoutURLs\":[\"http://localhost:3010/logout/\"]}",
+    "userPoolGroupList": [
+        "RubbishAdmins"
+    ],
+    "serviceName": "Cognito",
+    "dependsOn": [],
+    "authProviders": []
 }

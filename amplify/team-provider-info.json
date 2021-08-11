@@ -21,10 +21,6 @@
           "partitionKeyType": "S",
           "sortKeyName": "CreationTime",
           "sortKeyType": "S"
-        },
-        "rubbishclient127f5b6a": {
-          "bucketName": "colab-app-storage",
-          "region": "us-east-2"
         }
       },
       "auth": {
@@ -34,6 +30,10 @@
         "rubbishAccessAPI": {
           "deploymentBucketName": "amplify-rubbishclient-dev-83729-deployment",
           "s3Key": "amplify-builds/rubbishAccessAPI-376a6b626a764464325a-build.zip"
+        },
+        "AdminQueries5a2f58ff": {
+          "deploymentBucketName": "amplify-rubbishclient-dev-83729-deployment",
+          "s3Key": "amplify-builds/AdminQueries5a2f58ff-4d643633447673493756-build.zip"
         }
       }
     }

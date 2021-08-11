@@ -1,0 +1,9 @@
+{
+    "groupPermissionMap": {
+        "RubbishAdmins": [
+            "create/update",
+            "read",
+            "delete"
+        ]
+    }
+}
