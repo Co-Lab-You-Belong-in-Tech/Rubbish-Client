@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView, Image, Button, Alert } from 'react-native';
 
 // AWS Amplify Setup
 import Amplify from 'aws-amplify'
@@ -9,17 +9,25 @@ Amplify.configure(config);
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+    <SafeAreaView style={styles.container}>
+      <Text>New Rubbish App!</Text>
+      <Button
+      title='Login'
+      onPress={() =>
+      Alert.prompt('You want to login!', 'Okay', text => console.log(text))} />
+      <Button
+      title='Logout'
+      onPress={() =>
+      Alert.prompt('You want to logout!', 'Okay', text => console.log(text))} />
       <StatusBar style="auto" />
-    </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#ccc',
     alignItems: 'center',
     justifyContent: 'center',
   },
