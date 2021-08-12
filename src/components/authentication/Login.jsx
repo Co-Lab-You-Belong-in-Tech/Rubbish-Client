@@ -4,11 +4,9 @@ import { StyleSheet, Text, View, SafeAreaView, Image, TextInput, Button, Alert, 
 
 
 export default function Login() {
-    const [password, setPassword] = useState('');
+    const [password, onChangePassword] = useState('');
+    const [email, onChangeEmail] = useState('');
 
-    const handlePasswordChange = (event) => {
-        setPassword(event.target.value);
-    }
     return (
         <SafeAreaView style={styles.container}>
             <Image source={{
@@ -17,12 +15,22 @@ export default function Login() {
                 uri: "https://picsum.photos/100/100"
             }} />
 
-            <Text>Rubbish Mobile App New</Text>
+            <Text>Rubbish Mobile App</Text>
 
-            <TextInput style={styles.input}
+            <TextInput 
+                style={styles.input}
                 placeholder='Password'
                 placeholderTextColor='white'
-                onChangeText={handlePasswordChange} />
+                onChangeText={onChangeEmail}
+                value={email} />
+
+            <TextInput 
+                style={styles.input}
+                placeholder='Email'
+                placeholderTextColor='white'
+                onChangeText={onChangePassword}
+                value={password} />
+
             <TouchableOpacity 
                 style = {styles.loginButton}
                 onPress = {() =>
@@ -57,17 +65,17 @@ const styles = StyleSheet.create({
         borderWidth: 1
     },
     loginButton: {
-        backgroundColor: '#7a42f4',
+        backgroundColor: '#A9A9A9',
         padding: 10,
         margin: 15,
         height: 40,
         width: 175,
     },
     loginButtonText: {
-        color: 'white'
+        color: 'white',
     },
     signupButton: {
-        backgroundColor: '#7a42f4',
+        backgroundColor: '#A9A9A9',
         padding: 10,
         margin: 15,
         height: 40,
