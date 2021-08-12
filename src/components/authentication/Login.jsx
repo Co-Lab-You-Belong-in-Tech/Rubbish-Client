@@ -1,9 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, SafeAreaView, Image, TextInput, Button, Alert, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView, Image, TextInput, Alert, TouchableOpacity } from 'react-native';
 
 
-export default function Login() {
+export default function Login({ navigation }) {
     const [password, onChangePassword] = useState('');
     const [email, onChangeEmail] = useState('');
 
@@ -19,14 +19,14 @@ export default function Login() {
 
             <TextInput 
                 style={styles.input}
-                placeholder='Password'
+                placeholder='Email'
                 placeholderTextColor='white'
                 onChangeText={onChangeEmail}
                 value={email} />
 
             <TextInput 
                 style={styles.input}
-                placeholder='Email'
+                placeholder='Password'
                 placeholderTextColor='white'
                 onChangeText={onChangePassword}
                 value={password} />
@@ -40,8 +40,7 @@ export default function Login() {
             
             <TouchableOpacity 
                 style = {styles.signupButton}
-                onPress = {() =>
-                    Alert.prompt('You want to signup!', 'Okay', text => console.log(text))}>
+                onPress = {() => navigation.navigate('Signup')}>
                 <Text style = {styles.signupButtonText}>Signup</Text>
             </TouchableOpacity>
 
