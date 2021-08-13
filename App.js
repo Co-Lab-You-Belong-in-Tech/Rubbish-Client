@@ -9,6 +9,7 @@ import Signup from './src/components/authentication/Signup.jsx';
 import OrganizerDash from './src/components/dashboards/OrganizerDash.jsx';
 import VolunteerDash from './src/components/dashboards/VolunteerDash.jsx';
 import CreateEvent from './src/components/events/CreateEvent.jsx';
+import EventList from './src/components/events/EventList.jsx';
 
 Amplify.configure(config);
 
@@ -23,6 +24,7 @@ export default function App() {
         <Stack.Screen name='Organizer' component={OrganizerDash}></Stack.Screen>
         <Stack.Screen name='Volunteer' component={VolunteerDash}></Stack.Screen>
         <Stack.Screen name='Create Event' component={CreateEvent}></Stack.Screen>
+        <Stack.Screen name='Event List' component={EventList}></Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>
   );

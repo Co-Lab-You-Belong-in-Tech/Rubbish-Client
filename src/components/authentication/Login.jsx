@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, SafeAreaView, Image, TextInput, Alert, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView, Image, TextInput, TouchableOpacity } from 'react-native';
 
 
 export default function Login({ navigation }) {
@@ -34,8 +34,8 @@ export default function Login({ navigation }) {
             <TouchableOpacity 
                 style = {styles.loginButton}
                 onPress = {() =>
-                    Alert.prompt('You want to login!', 'Okay', text => console.log(text))}>
-                <Text style = {styles.loginButtonText}>Login</Text>
+                    navigation.navigate('Organizer')}>
+                <Text style = {styles.loginButtonText}>Login with Google</Text>
             </TouchableOpacity>
             
             <TouchableOpacity 
