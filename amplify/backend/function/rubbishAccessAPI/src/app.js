@@ -22,6 +22,9 @@ app.use(awsServerlessExpressMiddleware.eventContext())
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*")
   res.header("Access-Control-Allow-Headers", "*")
+  res.header("Access-Control-Allow-Credentials", true)
+  res.header("Access-Control-Allow-Methods", "*")
+
   next()
 });
 
@@ -32,6 +35,7 @@ app.use(function(req, res, next) {
 
 app.get('/api', function(req, res) {
   // Add your code here
+  console.log('Get Call Received.');
   res.json({success: 'get call succeed!', url: req.url});
 });
 
