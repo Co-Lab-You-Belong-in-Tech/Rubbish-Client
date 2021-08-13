@@ -1,6 +1,6 @@
 {
     "identityPoolName": "rubbishclient_identitypool_b0d4fc52",
-    "allowUnauthenticatedIdentities": true,
+    "allowUnauthenticatedIdentities": false,
     "resourceNameTruncated": "rubbisb0d4fc52",
     "userPoolName": "rubbishclient_userpool_b0d4fc52",
     "autoVerifiedAttributes": [

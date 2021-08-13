@@ -9,7 +9,8 @@
       "UnauthRoleName": "amplify-rubbishclient-dev-83729-unauthRole",
       "StackName": "amplify-rubbishclient-dev-83729",
       "StackId": "arn:aws:cloudformation:us-east-2:199342328116:stack/amplify-rubbishclient-dev-83729/c5815850-f96a-11eb-b9b0-0aa6cfc5a0b4",
-      "AmplifyAppId": "d31vw7vusqsyo7"
+      "AmplifyAppId": "d31vw7vusqsyo7",
+      "APIGatewayAuthURL": "https://s3.amazonaws.com/amplify-rubbishclient-dev-83729-deployment/amplify-cfn-templates/api/APIGatewayAuthStack.json"
     },
     "categories": {
       "storage": {
@@ -24,7 +25,8 @@
         }
       },
       "auth": {
-        "cognitob0d4fc52": {}
+        "cognitob0d4fc52": {},
+        "userPoolGroups": {}
       },
       "function": {
         "rubbishAccessAPI": {

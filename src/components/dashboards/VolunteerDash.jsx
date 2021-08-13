@@ -3,9 +3,10 @@ import { StyleSheet, Text, View, SafeAreaView, Image, TextInput, Alert, Touchabl
 
 export default function VolunteerDash() {
     return (
-        <div>
-            <h1>Volunteer Dashboard</h1>
-        </div>
+        <SafeAreaView>
+            <Text>Volunteer Dashboard</Text>
+
+        </SafeAreaView>
     );
 }
 
