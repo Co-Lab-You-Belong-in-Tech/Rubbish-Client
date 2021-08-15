@@ -24,10 +24,14 @@ class Login extends Component {
     }
 
     async componentDidMount() {
-        const currentUser = await Auth.currentAuthenticatedUser();
-        console.log(currentUser);
-        if(currentUser && currentUser.username)
-            this.setState({user: currentUser, loginStatus: 1});
+        try {
+            const currentUser = await Auth.currentAuthenticatedUser();
+            // console.log(currentUser);
+            if(currentUser && currentUser.username)
+                this.setState({user: currentUser, loginStatus: 1}); 
+        } catch (err) {
+            console.log(err);
+        } 
     }
 
     async signIn(username, password) {
@@ -117,10 +121,11 @@ class TestPanle extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            query: '/api',
-            response: '',
-            requestBody: ''
+            response: ''
         }
+        
+        this.query = '/api';
+        this.requestBody = '';
     }
 
     async ApiGet (entry) {
@@ -208,55 +213,59 @@ class TestPanle extends Component {
     }
 
     onChangeQuery = (text) => {
-        this.setState({ query: text })
+        this.query = '/api' + text;
     }
 
     onChangeRequestBody = (text) => {
-        this.setState({ requestBody: text })
+        this.requestBody = text;
     }
 
     componentDidUpdate = () => {
-        // this.setState({ query: '', response: '' })
+        if (!this.props.userSession) {
+            this.query = '/api';
+            this.requestBody = '';
+        }
     }
 
     render() {
-        const { query, response, requestBody } = this.state;
+        const { response } = this.state;
         const user = this.props.userSession;
         if (user) {
             return (
                 <View>
-                    <View>
-                        <Text> Successfully logged in. </Text>
-                        <Text> Current Session: </Text>
-                        <table>
-                            <tbody>
-                                <tr> 
-                                    <td> <b>Username</b> </td> 
-                                    <td> {user.username} </td> 
-                                </tr>
-                                <tr> 
-                                    <td> <b>Email</b> </td> 
-                                    <td> {user.attributes.email} </td> 
-                                </tr> 
-                                <tr> 
-                                    <td> <b>userPoolId</b> </td> 
-                                    <td> {user.pool.userPoolId} </td> 
-                                </tr>
-                            </tbody>
-                        </table> 
-                        <Text><h2> API test field: </h2></Text>
+                    <View style = {{alignItems: 'center',justifyContent: 'center'}}>
+                        {/* Use {"\n"} to start a new line because <br/> is not native supported on Android. */}
+                        <Text> 
+                            {"\n"} 
+                            Successfully logged in. 
+                            Current Session:
+                            {"\n"}
+                        </Text>
+                        <View>
+                            <Text> 
+                                <Text style={{fontWeight: 'bold'}}>Username </Text> {user.username} {"\n"}
+                                <Text style={{fontWeight: 'bold'}}>Email          </Text> {user.attributes.email} {"\n"}
+                                <Text style={{fontWeight: 'bold'}}>userPoolId</Text> {user.pool.userPoolId} {"\n"}
+                            </Text>
+                        </View> 
+                        <Text style={{ fontSize: 20, fontWeight: 'bold'}}>API test field:</Text>
+                        <Text style={{ fontSize: 15, fontWeight: 'bold'}}>Response Area:</Text>
+                        <Text> {response} {"\n"} </Text>
                         <Text>Enter path and queries here.</Text>
-                        <TextInput 
-                            style={styles.input}
-                            onChangeText={this.onChangeQuery}
-                            value={query}
-                        />
+                        <View style = {{flexDirection:'row', alignItems: 'center',justifyContent: 'center'}}>
+                            <Text>/api</Text>
+                            <TextInput 
+                                style={styles.input}
+                                onChangeText={this.onChangeQuery}
+                            />
+                        </View>
+                        
 
                         <View style = {{flexDirection:'row', flexWrap:'wrap'}}>
                             <TouchableOpacity 
                                 style = {styles.button}
                                 onPress = {() => 
-                                    this.ApiGet(query)
+                                    this.ApiGet(this.query)
                                 }>
                                 <Text style = {styles.loginButtonText}> Get </Text>
                             </TouchableOpacity> 
@@ -264,27 +273,26 @@ class TestPanle extends Component {
                             <TouchableOpacity 
                                 style = {styles.button}
                                 onPress = {() => 
-                                    this.ApiDelete(query)
+                                    this.ApiDelete(this.query)
                                 }>
                                 <Text style = {styles.loginButtonText}> Delete </Text>
                             </TouchableOpacity>
                         </View>
 
-                        <Text> Enter post/put request body here. </Text>
+                        <Text>Enter post/put request body here.</Text>
                         
                         <TextInput 
                             style={styles.input}
                             placeholder='{}'
                             placeholderTextColor='white'
                             onChangeText={this.onChangeRequestBody}
-                            value={requestBody}
                         />
 
                         <View style={{flexDirection:'row', flexWrap:'wrap'}}>
                             <TouchableOpacity 
                                 style = {styles.button}
                                 onPress = {() => 
-                                    this.ApiPost(query, requestBody)
+                                    this.ApiPost(this.query, this.requestBody)
                                 }>
                                 <Text style = {styles.loginButtonText}> Post </Text>
                             </TouchableOpacity> 
@@ -292,13 +300,12 @@ class TestPanle extends Component {
                             <TouchableOpacity 
                                 style = {styles.button}
                                 onPress = {() => 
-                                    this.ApiPut(query, requestBody)
+                                    this.ApiPut(this.query, this.requestBody)
                                 }>
                                 <Text style = {styles.loginButtonText}> Put </Text>
                             </TouchableOpacity>
                         </View>
                     </View>
-                    <Text> {response} </Text>
                 </View>
             )
         }

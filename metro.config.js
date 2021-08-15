@@ -1,6 +1,6 @@
 // Learn more https://docs.expo.io/guides/customizing-metro
 const { getDefaultConfig } = require('expo/metro-config');
-const blacklist = require('metro-config/src/defaults/exclusionList');
+const blacklist = require('metro-config/src/defaults/blacklist');
 
 const defaultConfig = getDefaultConfig(__dirname);
 // Solving duplicated files error causing by amplify backend:
