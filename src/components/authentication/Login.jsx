@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState, Component } from 'react';
-import { StyleSheet, Text, View, SafeAreaView, Image, TextInput, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView, Image, TextInput, Alert, TouchableOpacity } from 'react-native';
 import { Auth, API } from 'aws-amplify';
 
 class Login extends Component {
@@ -91,12 +91,6 @@ class Login extends Component {
                     style = {styles.loginButton}
                     onPress = {() => loginStatus ? this.signOut() : this.signIn(username, password)}>
                     <Text style = {styles.loginButtonText}>{loginStatus? "Logoff" : "Login"}</Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity 
-                    style = {styles.signupButton}
-                    onPress = {() => this.props.navigation.navigate('Organizer')}>
-                    <Text style = {styles.signupButtonText}>Login with Google</Text>
                 </TouchableOpacity>
                 
                 <TouchableOpacity 

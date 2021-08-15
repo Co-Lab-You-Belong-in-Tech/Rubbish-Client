@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, SafeAreaView, Image, Switch, TextInput, Alert, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView, Image, TextInput, Alert, TouchableOpacity } from 'react-native';
 
 
 export default function Signup() {
@@ -8,8 +8,6 @@ export default function Signup() {
     const [email, onChangeEmail] = useState('');
     const [username, onChangeUsername] = useState('');
     const [location, onChangeLocation] = useState('');
-    const [isChecked, setIsChecked] = useState(false);
-    const toggleChecked = () => setIsChecked(previousState => !previousState);
 
     return (
         <SafeAreaView style={styles.container}>
@@ -17,16 +15,6 @@ export default function Signup() {
             <Text>Signup Rubbish Mobile App</Text>
             <Text>Volunteer?</Text>
             <Text>Organizer?</Text>
-            <View>
-                <Switch 
-                trackColor={{ false: "#000000", true: "#ffffff" }}
-                thumbColor={isChecked ? "#000000" : "#ff0000"}
-                ios_backgroundColor="#3e3e3e"
-                onValueChange={toggleChecked}
-                value={isChecked}
-                />
-            </View>
-            
             <TextInput 
                 style={styles.input}
                 placeholder='Username'

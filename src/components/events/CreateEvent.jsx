@@ -3,10 +3,9 @@ import { StyleSheet, Text, View, SafeAreaView, Image, TextInput, Alert, Touchabl
 
 export default function CreateEvent() {
     return (
-        <SafeAreaView>
-            <Text>Create a cleanup event</Text>
-
-        </SafeAreaView>
+        <div>
+            <h1>Create an Event</h1>
+        </div>
     );
 }
 
