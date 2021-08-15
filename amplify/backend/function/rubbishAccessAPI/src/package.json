@@ -4,11 +4,11 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.26.0",
     "aws-serverless-express": "^3.3.5",
     "body-parser": "^1.17.1",
     "express": "^4.15.2"
   },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

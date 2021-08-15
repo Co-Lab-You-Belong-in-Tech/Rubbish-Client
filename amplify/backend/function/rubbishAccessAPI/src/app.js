@@ -6,8 +6,8 @@ or in the "license" file accompanying this file. This file is distributed on an 
 See the License for the specific language governing permissions and limitations under the License.
 */
 
-
-
+const { DynamoDBClient, GetItemCommand, ScanCommand } = require("@aws-sdk/client-dynamodb");
+const dynamoClient = new DynamoDBClient({ region: "us-east-2" });
 
 var express = require('express')
 var bodyParser = require('body-parser')
@@ -30,18 +30,61 @@ app.use(function(req, res, next) {
 
 
 /**********************
- * Example get method *
+ * Get method *
  **********************/
 
 app.get('/api', function(req, res) {
   // Add your code here
-  console.log('Get Call Received.');
-  res.json({success: 'get call succeed!', url: req.url});
+  res.json({success: 'Get Call Received from API root', url: req.url});
 });
 
-app.get('/api/*', function(req, res) {
-  // Add your code here
-  res.json({success: 'get call succeed!', url: req.url});
+// app.get('/api/*', function(req, res) {
+//   // Add your code here
+//   console.log(req);
+//   res.json({success: 'Get call succeed!', url: req.url});
+// });
+
+// Read from DDB. Format: /api/DB/tablename?query
+app.get('/api/DB/:table', async function(req, res) {
+  let ret, queryType;
+  let statusCode = 200;
+  const tableName = req.params.table;
+
+  if(req.query.UserID) {
+    queryType = 'GetItem';
+    try {
+      const command = new GetItemCommand({
+        TableName: tableName,
+        Key: {
+          'UserID': {S: req.query.UserID},
+          'CreationTime': {S: req.query.CreationTime}
+        }
+      });
+      ret = await dynamoClient.send(command);
+    } catch (err) {
+      statusCode = 400;
+      console.log(err);
+      ret = err.name;
+    } finally {
+      console.log(ret.Item);
+      ret = JSON.stringify(ret.Item);
+    }
+  } else {
+    queryType = 'ScanTable';
+    try {
+      const command = new ScanCommand({ TableName: tableName });
+      ret = await dynamoClient.send(command);
+    } catch (err) {
+      statusCode = 400;
+      console.log(err);
+      ret = err.name;
+    } finally {
+      console.log(ret.Items);
+      ret = JSON.stringify(ret.Items);
+    }
+  }
+
+  res.json({desc: `Get: Read Query to table ${tableName}, queryType: ${queryType}`, url: req.url, status: statusCode, return: ret});
 });
 
 /****************************

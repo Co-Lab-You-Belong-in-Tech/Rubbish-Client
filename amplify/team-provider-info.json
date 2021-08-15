@@ -31,7 +31,7 @@
       "function": {
         "rubbishAccessAPI": {
           "deploymentBucketName": "amplify-rubbishclient-dev-83729-deployment",
-          "s3Key": "amplify-builds/rubbishAccessAPI-517372664e5256754b56-build.zip"
+          "s3Key": "amplify-builds/rubbishAccessAPI-397762322f5544345135-build.zip"
         },
         "AdminQueries5a2f58ff": {
           "deploymentBucketName": "amplify-rubbishclient-dev-83729-deployment",
